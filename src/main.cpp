@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cmd_handler.h>
+#include "commands/cmd_help.h"
 
 /**
  * main function
@@ -8,5 +10,10 @@
  * @return 0 by default
  */
 int main(int argc, char **argv) {
-    std::cout << argc << " arguments: " << argv[0] << '!' << '\n';
+    // if there is 1 (file name) arguments or less
+    if (argc <= 1) {
+        cmd_help(argv[0]);
+    }else{
+        run_cmd(argv[1], argc, argv);
+    }
 }
